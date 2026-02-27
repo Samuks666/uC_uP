@@ -1,0 +1,264 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"14 C:\Projetos\uC\Lab1C_Interrupcao/src/isr.c
+[v _hp_intrp hp_intrp `IIH(v  1 e 0 0 ]
+"23
+[v _lp_intrp lp_intrp `IIL(v  1 e 0 0 ]
+"92 C:\Projetos\uC\Lab1C_Interrupcao/src/main.c
+[v _main main `(v  1 e 0 0 ]
+"163
+[v _delay_200ms delay_200ms `(v  1 e 0 0 ]
+"169
+[v _delay_500ms delay_500ms `(v  1 e 0 0 ]
+"175
+[v _delay_1s delay_1s `(v  1 e 0 0 ]
+"63 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 3 0 ]
+"88 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"89 C:\Projetos\uC\Lab1C_Interrupcao/src/main.c
+[v _tempo_1s tempo_1s `VEi  1 e 2 0 ]
+"90
+[v _tempo_200ms tempo_200ms `VEi  1 e 2 0 ]
+"3742 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+[s S309 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"3790
+[s S318 . 1 `uc 1 LD0 1 0 :1:0 
+]
+[s S320 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+]
+[s S323 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LD2 1 0 :1:2 
+]
+[s S326 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LD3 1 0 :1:3 
+]
+[s S329 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LD4 1 0 :1:4 
+]
+[s S332 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LD5 1 0 :1:5 
+]
+[s S335 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 LD6 1 0 :1:6 
+]
+[s S338 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S341 . 1 `S309 1 . 1 0 `S318 1 . 1 0 `S320 1 . 1 0 `S323 1 . 1 0 `S326 1 . 1 0 `S329 1 . 1 0 `S332 1 . 1 0 `S335 1 . 1 0 `S338 1 . 1 0 ]
+[v _LATDbits LATDbits `VES341  1 e 1 @3980 ]
+[s S23 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"4205
+[s S32 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S41 . 1 `S23 1 . 1 0 `S32 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES41  1 e 1 @3987 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"6187
+[v _CMCON CMCON `VEuc  1 e 1 @4020 ]
+"7173
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+[s S64 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"8194
+[s S66 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S69 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S72 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S75 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S78 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S87 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_IPEN 1 0 :1:7 
+]
+[s S90 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+`uc 1 . 1 0 :2:5 
+`uc 1 nIPEN 1 0 :1:7 
+]
+[u S98 . 1 `S64 1 . 1 0 `S66 1 . 1 0 `S69 1 . 1 0 `S72 1 . 1 0 `S75 1 . 1 0 `S78 1 . 1 0 `S87 1 . 1 0 `S90 1 . 1 0 ]
+[v _RCONbits RCONbits `VES98  1 e 1 @4048 ]
+[s S142 . 1 `uc 1 INT1IF 1 0 :1:0 
+`uc 1 INT2IF 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 INT1IE 1 0 :1:3 
+`uc 1 INT2IE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 INT1IP 1 0 :1:6 
+`uc 1 INT2IP 1 0 :1:7 
+]
+"9019
+[s S151 . 1 `uc 1 INT1F 1 0 :1:0 
+`uc 1 INT2F 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 INT1E 1 0 :1:3 
+`uc 1 INT2E 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 INT1P 1 0 :1:6 
+`uc 1 INT2P 1 0 :1:7 
+]
+[u S160 . 1 `S142 1 . 1 0 `S151 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES160  1 e 1 @4080 ]
+[s S182 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"9110
+[s S185 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S194 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IP 1 0 :1:2 
+`uc 1 . 1 0 :4:3 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S199 . 1 `S182 1 . 1 0 `S185 1 . 1 0 `S194 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES199  1 e 1 @4081 ]
+[s S221 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"9211
+[s S230 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S239 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[s S248 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S257 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S261 . 1 `S221 1 . 1 0 `S230 1 . 1 0 `S239 1 . 1 0 `S248 1 . 1 0 `S257 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES261  1 e 1 @4082 ]
+"92 C:\Projetos\uC\Lab1C_Interrupcao/src/main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"160
+} 0
+"169
+[v _delay_500ms delay_500ms `(v  1 e 0 0 ]
+{
+"170
+[v delay_500ms@i i `i  1 a 2 32 ]
+"173
+} 0
+"163
+[v _delay_200ms delay_200ms `(v  1 e 0 0 ]
+{
+"164
+[v delay_200ms@i i `i  1 a 2 32 ]
+"167
+} 0
+"175
+[v _delay_1s delay_1s `(v  1 e 0 0 ]
+{
+"176
+[v delay_1s@i i `i  1 a 2 32 ]
+"179
+} 0
+"23 C:\Projetos\uC\Lab1C_Interrupcao/src/isr.c
+[v _lp_intrp lp_intrp `IIL(v  1 e 0 0 ]
+{
+"29
+} 0
+"14
+[v _hp_intrp hp_intrp `IIH(v  1 e 0 0 ]
+{
+"21
+} 0

@@ -1,0 +1,210 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"27 A:\uC\Projects\robotarm_prototype/src/main.c
+[v _checkAllBtns checkAllBtns `(v  1 e 1 0 ]
+"75
+[v _rotateMotorXY rotateMotorXY `(v  1 e 1 0 ]
+"95
+[v _rotateMotorZ rotateMotorZ `(v  1 e 1 0 ]
+"115
+[v _calibrateMotorXY calibrateMotorXY `(v  1 e 1 0 ]
+"139
+[v _calibrateMotorZ calibrateMotorZ `(v  1 e 1 0 ]
+"163
+[v _setup setup `(v  1 e 1 0 ]
+"192
+[v _main main `(v  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"16 A:\uC\Projects\robotarm_prototype/src/main.c
+[v _steps_cw steps_cw `C[4]uc  1 e 4 0 ]
+"18
+[v _steps_ccw steps_ccw `C[4]uc  1 e 4 0 ]
+"20
+[v _positionXY positionXY `i  1 e 2 0 ]
+"21
+[v _positionZ positionZ `i  1 e 2 0 ]
+"22
+[v _rightSteps rightSteps `i  1 e 2 0 ]
+"23
+[v _leftSteps leftSteps `i  1 e 2 0 ]
+"24
+[v _upSteps upSteps `i  1 e 2 0 ]
+"25
+[v _downSteps downSteps `i  1 e 2 0 ]
+[s S78 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"2603 C:\Program Files\Microchip\xc8\v3.00\pic\include\proc/pic18f4550.h
+[s S87 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S94 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 P1A 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S101 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S105 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S108 . 1 `S78 1 . 1 0 `S87 1 . 1 0 `S94 1 . 1 0 `S101 1 . 1 0 `S105 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES108  1 e 1 @3970 ]
+[s S24 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"2734
+[s S33 . 1 `uc 1 SPP0 1 0 :1:0 
+`uc 1 SPP1 1 0 :1:1 
+`uc 1 SPP2 1 0 :1:2 
+`uc 1 SPP3 1 0 :1:3 
+`uc 1 SPP4 1 0 :1:4 
+`uc 1 SPP5 1 0 :1:5 
+`uc 1 SPP6 1 0 :1:6 
+`uc 1 SPP7 1 0 :1:7 
+]
+[s S42 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S45 . 1 `S24 1 . 1 0 `S33 1 . 1 0 `S42 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES45  1 e 1 @3971 ]
+[s S151 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+]
+"2996
+[s S159 . 1 `uc 1 LA0 1 0 :1:0 
+`uc 1 LA1 1 0 :1:1 
+`uc 1 LA2 1 0 :1:2 
+`uc 1 LA3 1 0 :1:3 
+`uc 1 LA4 1 0 :1:4 
+`uc 1 LA5 1 0 :1:5 
+`uc 1 LA6 1 0 :1:6 
+]
+[u S167 . 1 `S151 1 . 1 0 `S159 1 . 1 0 ]
+[v _LATAbits LATAbits `VES167  1 e 1 @3977 ]
+"3071
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"3425
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"3623
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"3845
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"3999
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"6579
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"7984
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+"192 A:\uC\Projects\robotarm_prototype/src/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"194
+[v main@direction direction `[2]i  1 a 4 15 ]
+"220
+} 0
+"163
+[v _setup setup `(v  1 e 1 0 ]
+{
+"190
+} 0
+"139
+[v _calibrateMotorZ calibrateMotorZ `(v  1 e 1 0 ]
+{
+"156
+[v calibrateMotorZ@i_229 i `i  1 a 2 11 ]
+"148
+[v calibrateMotorZ@i i `i  1 a 2 9 ]
+"161
+} 0
+"95
+[v _rotateMotorZ rotateMotorZ `(v  1 e 1 0 ]
+{
+"105
+[v rotateMotorZ@i_213 i `i  1 a 2 6 ]
+"98
+[v rotateMotorZ@i i `i  1 a 2 4 ]
+"95
+[v rotateMotorZ@direction direction `i  1 p 2 0 ]
+"113
+} 0
+"115
+[v _calibrateMotorXY calibrateMotorXY `(v  1 e 1 0 ]
+{
+"132
+[v calibrateMotorXY@i_225 i `i  1 a 2 11 ]
+"124
+[v calibrateMotorXY@i i `i  1 a 2 9 ]
+"137
+} 0
+"75
+[v _rotateMotorXY rotateMotorXY `(v  1 e 1 0 ]
+{
+"85
+[v rotateMotorXY@i_209 i `i  1 a 2 6 ]
+"78
+[v rotateMotorXY@i i `i  1 a 2 4 ]
+"75
+[v rotateMotorXY@direction direction `i  1 p 2 0 ]
+"93
+} 0
+"27
+[v _checkAllBtns checkAllBtns `(v  1 e 1 0 ]
+{
+"34
+[v checkAllBtns@select select `uc  1 a 1 6 ]
+"27
+[v checkAllBtns@rtn rtn `*.30i  1 p 1 0 ]
+"73
+} 0

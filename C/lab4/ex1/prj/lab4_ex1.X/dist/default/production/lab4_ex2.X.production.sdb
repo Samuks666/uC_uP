@@ -1,0 +1,120 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL LFSROK EMI_WORD IEEE_FLT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"38 C:\Users\Aluno\Downloads\lab4\ex2/src/main.c
+[v _main main `(v  1 e 0 0 ]
+"111
+[v _AD_Read AD_Read `(ui  1 e 2 0 ]
+"130
+[v _delay_50ms delay_50ms `(v  1 e 0 0 ]
+"63 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 4 0 ]
+"88 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"3742 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"7103
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"7173
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"7263
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S73 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"7311
+[s S76 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S83 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S90 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S93 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S96 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S99 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S102 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S105 . 1 `S73 1 . 1 0 `S76 1 . 1 0 `S73 1 . 1 0 `S83 1 . 1 0 `S90 1 . 1 0 `S93 1 . 1 0 `S96 1 . 1 0 `S99 1 . 1 0 `S102 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES105  1 e 1 @4034 ]
+"7385
+[v _ADRES ADRES `VEus  1 e 2 @4035 ]
+[s S24 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"9110
+[s S27 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S36 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IP 1 0 :1:2 
+`uc 1 . 1 0 :4:3 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S41 . 1 `S24 1 . 1 0 `S27 1 . 1 0 `S36 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES41  1 e 1 @4081 ]
+"38 C:\Users\Aluno\Downloads\lab4\ex2/src/main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"66
+[v main@ad_value ad_value `ui  1 a 2 6 ]
+"67
+[v main@n_leds_on n_leds_on `uc  1 a 1 9 ]
+"68
+[v main@led_mask led_mask `uc  1 a 1 8 ]
+"107
+} 0
+"130
+[v _delay_50ms delay_50ms `(v  1 e 0 0 ]
+{
+"133
+[v delay_50ms@i i `i  1 a 2 1 ]
+"137
+} 0
+"111
+[v _AD_Read AD_Read `(ui  1 e 2 0 ]
+{
+"125
+} 0

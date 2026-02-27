@@ -1,0 +1,1376 @@
+
+
+Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
+                                                                                               Tue Sep 30 14:38:31 2025
+
+Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1 
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,space=0,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,space=0,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     9                           	psect	text0,global,reloc=2,class=CODE,space=0,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,space=0,delta=1
+    11                           	psect	text2,global,reloc=2,class=CODE,space=0,delta=1
+    12                           	psect	text3,global,reloc=2,class=CODE,space=0,delta=1
+    13                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    14                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    15                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    16                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    17   000000                     
+    18                           ; Generated 05/12/2024 GMT
+    19                           ; 
+    20                           ; Copyright © 2024, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution. Publication is not required when
+    34                           ;        this file is used in an embedded application.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    47                           ; 
+    48                           ; 
+    49                           ; Code-generator required, PIC18F4520 Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52   000FE0                     bsr             equ	4064
+    53   000FE9                     fsr0            equ	4073
+    54   000FEA                     fsr0h           equ	4074
+    55   000FE9                     fsr0l           equ	4073
+    56   000FE1                     fsr1            equ	4065
+    57   000FE2                     fsr1h           equ	4066
+    58   000FE1                     fsr1l           equ	4065
+    59   000FD9                     fsr2            equ	4057
+    60   000FDA                     fsr2h           equ	4058
+    61   000FD9                     fsr2l           equ	4057
+    62   000FEF                     indf0           equ	4079
+    63   000FE7                     indf1           equ	4071
+    64   000FDF                     indf2           equ	4063
+    65   000FF2                     intcon          equ	4082
+    66   000000                     nvmcon          equ	0
+    67   000FF9                     pcl             equ	4089
+    68   000FFA                     pclath          equ	4090
+    69   000FFB                     pclatu          equ	4091
+    70   000FEB                     plusw0          equ	4075
+    71   000FE3                     plusw1          equ	4067
+    72   000FDB                     plusw2          equ	4059
+    73   000FED                     postdec0        equ	4077
+    74   000FE5                     postdec1        equ	4069
+    75   000FDD                     postdec2        equ	4061
+    76   000FEE                     postinc0        equ	4078
+    77   000FE6                     postinc1        equ	4070
+    78   000FDE                     postinc2        equ	4062
+    79   000FEC                     preinc0         equ	4076
+    80   000FE4                     preinc1         equ	4068
+    81   000FDC                     preinc2         equ	4060
+    82   000FF3                     prod            equ	4083
+    83   000FF4                     prodh           equ	4084
+    84   000FF3                     prodl           equ	4083
+    85   000FD8                     status          equ	4056
+    86   000FF5                     tablat          equ	4085
+    87   000FF6                     tblptr          equ	4086
+    88   000FF7                     tblptrh         equ	4087
+    89   000FF6                     tblptrl         equ	4086
+    90   000FF8                     tblptru         equ	4088
+    91   000FFD                     tosl            equ	4093
+    92   000FE8                     wreg            equ	4072
+    93   000F80                     PORTA           equ	3968	;# 
+    94   000F81                     PORTB           equ	3969	;# 
+    95   000F82                     PORTC           equ	3970	;# 
+    96   000F83                     PORTD           equ	3971	;# 
+    97   000F84                     PORTE           equ	3972	;# 
+    98   000F89                     LATA            equ	3977	;# 
+    99   000F8A                     LATB            equ	3978	;# 
+   100   000F8B                     LATC            equ	3979	;# 
+   101   000F8C                     LATD            equ	3980	;# 
+   102   000F8D                     LATE            equ	3981	;# 
+   103   000F92                     TRISA           equ	3986	;# 
+   104   000F92                     DDRA            equ	3986	;# 
+   105   000F93                     TRISB           equ	3987	;# 
+   106   000F93                     DDRB            equ	3987	;# 
+   107   000F94                     TRISC           equ	3988	;# 
+   108   000F94                     DDRC            equ	3988	;# 
+   109   000F95                     TRISD           equ	3989	;# 
+   110   000F95                     DDRD            equ	3989	;# 
+   111   000F96                     TRISE           equ	3990	;# 
+   112   000F96                     DDRE            equ	3990	;# 
+   113   000F9B                     OSCTUNE         equ	3995	;# 
+   114   000F9D                     PIE1            equ	3997	;# 
+   115   000F9E                     PIR1            equ	3998	;# 
+   116   000F9F                     IPR1            equ	3999	;# 
+   117   000FA0                     PIE2            equ	4000	;# 
+   118   000FA1                     PIR2            equ	4001	;# 
+   119   000FA2                     IPR2            equ	4002	;# 
+   120   000FA6                     EECON1          equ	4006	;# 
+   121   000FA7                     EECON2          equ	4007	;# 
+   122   000FA8                     EEDATA          equ	4008	;# 
+   123   000FA9                     EEADR           equ	4009	;# 
+   124   000FAB                     RCSTA           equ	4011	;# 
+   125   000FAB                     RCSTA1          equ	4011	;# 
+   126   000FAC                     TXSTA           equ	4012	;# 
+   127   000FAC                     TXSTA1          equ	4012	;# 
+   128   000FAD                     TXREG           equ	4013	;# 
+   129   000FAD                     TXREG1          equ	4013	;# 
+   130   000FAE                     RCREG           equ	4014	;# 
+   131   000FAE                     RCREG1          equ	4014	;# 
+   132   000FAF                     SPBRG           equ	4015	;# 
+   133   000FAF                     SPBRG1          equ	4015	;# 
+   134   000FB0                     SPBRGH          equ	4016	;# 
+   135   000FB1                     T3CON           equ	4017	;# 
+   136   000FB2                     TMR3            equ	4018	;# 
+   137   000FB2                     TMR3L           equ	4018	;# 
+   138   000FB3                     TMR3H           equ	4019	;# 
+   139   000FB4                     CMCON           equ	4020	;# 
+   140   000FB5                     CVRCON          equ	4021	;# 
+   141   000FB6                     ECCP1AS         equ	4022	;# 
+   142   000FB6                     ECCPAS          equ	4022	;# 
+   143   000FB7                     PWM1CON         equ	4023	;# 
+   144   000FB7                     ECCP1DEL        equ	4023	;# 
+   145   000FB8                     BAUDCON         equ	4024	;# 
+   146   000FB8                     BAUDCTL         equ	4024	;# 
+   147   000FBA                     CCP2CON         equ	4026	;# 
+   148   000FBB                     CCPR2           equ	4027	;# 
+   149   000FBB                     CCPR2L          equ	4027	;# 
+   150   000FBC                     CCPR2H          equ	4028	;# 
+   151   000FBD                     CCP1CON         equ	4029	;# 
+   152   000FBE                     CCPR1           equ	4030	;# 
+   153   000FBE                     CCPR1L          equ	4030	;# 
+   154   000FBF                     CCPR1H          equ	4031	;# 
+   155   000FC0                     ADCON2          equ	4032	;# 
+   156   000FC1                     ADCON1          equ	4033	;# 
+   157   000FC2                     ADCON0          equ	4034	;# 
+   158   000FC3                     ADRES           equ	4035	;# 
+   159   000FC3                     ADRESL          equ	4035	;# 
+   160   000FC4                     ADRESH          equ	4036	;# 
+   161   000FC5                     SSPCON2         equ	4037	;# 
+   162   000FC6                     SSPCON1         equ	4038	;# 
+   163   000FC7                     SSPSTAT         equ	4039	;# 
+   164   000FC8                     SSPADD          equ	4040	;# 
+   165   000FC9                     SSPBUF          equ	4041	;# 
+   166   000FCA                     T2CON           equ	4042	;# 
+   167   000FCB                     PR2             equ	4043	;# 
+   168   000FCB                     MEMCON          equ	4043	;# 
+   169   000FCC                     TMR2            equ	4044	;# 
+   170   000FCD                     T1CON           equ	4045	;# 
+   171   000FCE                     TMR1            equ	4046	;# 
+   172   000FCE                     TMR1L           equ	4046	;# 
+   173   000FCF                     TMR1H           equ	4047	;# 
+   174   000FD0                     RCON            equ	4048	;# 
+   175   000FD1                     WDTCON          equ	4049	;# 
+   176   000FD2                     HLVDCON         equ	4050	;# 
+   177   000FD2                     LVDCON          equ	4050	;# 
+   178   000FD3                     OSCCON          equ	4051	;# 
+   179   000FD5                     T0CON           equ	4053	;# 
+   180   000FD6                     TMR0            equ	4054	;# 
+   181   000FD6                     TMR0L           equ	4054	;# 
+   182   000FD7                     TMR0H           equ	4055	;# 
+   183   000FD8                     STATUS          equ	4056	;# 
+   184   000FD9                     FSR2            equ	4057	;# 
+   185   000FD9                     FSR2L           equ	4057	;# 
+   186   000FDA                     FSR2H           equ	4058	;# 
+   187   000FDB                     PLUSW2          equ	4059	;# 
+   188   000FDC                     PREINC2         equ	4060	;# 
+   189   000FDD                     POSTDEC2        equ	4061	;# 
+   190   000FDE                     POSTINC2        equ	4062	;# 
+   191   000FDF                     INDF2           equ	4063	;# 
+   192   000FE0                     BSR             equ	4064	;# 
+   193   000FE1                     FSR1            equ	4065	;# 
+   194   000FE1                     FSR1L           equ	4065	;# 
+   195   000FE2                     FSR1H           equ	4066	;# 
+   196   000FE3                     PLUSW1          equ	4067	;# 
+   197   000FE4                     PREINC1         equ	4068	;# 
+   198   000FE5                     POSTDEC1        equ	4069	;# 
+   199   000FE6                     POSTINC1        equ	4070	;# 
+   200   000FE7                     INDF1           equ	4071	;# 
+   201   000FE8                     WREG            equ	4072	;# 
+   202   000FE9                     FSR0            equ	4073	;# 
+   203   000FE9                     FSR0L           equ	4073	;# 
+   204   000FEA                     FSR0H           equ	4074	;# 
+   205   000FEB                     PLUSW0          equ	4075	;# 
+   206   000FEC                     PREINC0         equ	4076	;# 
+   207   000FED                     POSTDEC0        equ	4077	;# 
+   208   000FEE                     POSTINC0        equ	4078	;# 
+   209   000FEF                     INDF0           equ	4079	;# 
+   210   000FF0                     INTCON3         equ	4080	;# 
+   211   000FF1                     INTCON2         equ	4081	;# 
+   212   000FF2                     INTCON          equ	4082	;# 
+   213   000FF3                     PROD            equ	4083	;# 
+   214   000FF3                     PRODL           equ	4083	;# 
+   215   000FF4                     PRODH           equ	4084	;# 
+   216   000FF5                     TABLAT          equ	4085	;# 
+   217   000FF6                     TBLPTR          equ	4086	;# 
+   218   000FF6                     TBLPTRL         equ	4086	;# 
+   219   000FF7                     TBLPTRH         equ	4087	;# 
+   220   000FF8                     TBLPTRU         equ	4088	;# 
+   221   000FF9                     PCLAT           equ	4089	;# 
+   222   000FF9                     PC              equ	4089	;# 
+   223   000FF9                     PCL             equ	4089	;# 
+   224   000FFA                     PCLATH          equ	4090	;# 
+   225   000FFB                     PCLATU          equ	4091	;# 
+   226   000FFC                     STKPTR          equ	4092	;# 
+   227   000FFD                     TOS             equ	4093	;# 
+   228   000FFD                     TOSL            equ	4093	;# 
+   229   000FFE                     TOSH            equ	4094	;# 
+   230   000FFF                     TOSU            equ	4095	;# 
+   231                           
+   232                           	psect	smallconst
+   233   000600                     __psmallconst:
+   234                           	callstack 0
+   235   000600  00                 	db	0
+   236   000601                     _steps_ccw:
+   237                           	callstack 0
+   238   000601  08                 	db	8
+   239   000602  02                 	db	2
+   240   000603  04                 	db	4
+   241   000604  01                 	db	1
+   242   000605                     __end_of_steps_ccw:
+   243                           	callstack 0
+   244   000605                     _steps_cw:
+   245                           	callstack 0
+   246   000605  01                 	db	1
+   247   000606  04                 	db	4
+   248   000607  02                 	db	2
+   249   000608  08                 	db	8
+   250   000609                     __end_of_steps_cw:
+   251                           	callstack 0
+   252   000F95                     _TRISD          set	3989
+   253   000F94                     _TRISC          set	3988
+   254   000F93                     _TRISB          set	3987
+   255   000FC1                     _ADCON1         set	4033
+   256   000F82                     _PORTCbits      set	3970
+   257   000F8A                     _LATB           set	3978
+   258   000F83                     _PORTDbits      set	3971
+   259   000609  00                 	db	0	; dummy byte at the end
+   260   000600                     __smallconst    set	__psmallconst
+   261   000600                     __mediumconst   set	__psmallconst
+   262   000001                     __activetblptr  equ	1
+   263                           
+   264                           ; #config settings
+   265                           
+   266                           	psect	cinit
+   267   0008FC                     __pcinit:
+   268                           	callstack 0
+   269   0008FC                     start_initialization:
+   270                           	callstack 0
+   271   0008FC                     __initialization:
+   272                           	callstack 0
+   273                           
+   274                           ; Clear objects allocated to COMRAM (8 bytes)
+   275   0008FC  EE00  F011         	lfsr	0,__pbssCOMRAM
+   276   000900  0E08               	movlw	8
+   277   000902                     clear_0:
+   278   000902  6AEE               	clrf	postinc0,c
+   279   000904  06E8               	decf	wreg,f,c
+   280   000906  E1FD               	bnz	clear_0
+   281   000908                     end_of_initialization:
+   282                           	callstack 0
+   283   000908                     __end_of__initialization:
+   284                           	callstack 0
+   285   000908  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   286   00090A  6EF8               	movwf	tblptru,c
+   287   00090C  0E06               	movlw	high __Lsmallconst
+   288   00090E  6EF7               	movwf	tblptrh,c
+   289   000910  0100               	movlb	0
+   290   000912  EFE5  F003         	goto	_main	;jump to C main() function
+   291                           
+   292                           	psect	bssCOMRAM
+   293   000011                     __pbssCOMRAM:
+   294                           	callstack 0
+   295   000011                     _leftSteps:
+   296                           	callstack 0
+   297   000011                     	ds	2
+   298   000013                     _rightSteps:
+   299                           	callstack 0
+   300   000013                     	ds	2
+   301   000015                     _maxSteps:
+   302                           	callstack 0
+   303   000015                     	ds	2
+   304   000017                     _position:
+   305                           	callstack 0
+   306   000017                     	ds	2
+   307                           
+   308                           	psect	cstackCOMRAM
+   309   000001                     __pcstackCOMRAM:
+   310                           	callstack 0
+   311   000001                     ?_checkBtn:
+   312                           	callstack 0
+   313   000001                     rotateMotor@direction:
+   314                           	callstack 0
+   315                           
+   316                           ; 2 bytes @ 0x0
+   317   000001                     	ds	2
+   318   000003                     ??_checkBtn:
+   319   000003                     ??_rotateMotor:
+   320                           
+   321                           ; 1 bytes @ 0x2
+   322   000003                     	ds	2
+   323   000005                     rotateMotor@i:
+   324                           	callstack 0
+   325                           
+   326                           ; 2 bytes @ 0x4
+   327   000005                     	ds	2
+   328   000007                     rotateMotor@i_188:
+   329                           	callstack 0
+   330                           
+   331                           ; 2 bytes @ 0x6
+   332   000007                     	ds	2
+   333   000009                     ??_calibrateMotor:
+   334                           
+   335                           ; 1 bytes @ 0x8
+   336   000009                     	ds	1
+   337   00000A                     calibrateMotor@i:
+   338                           	callstack 0
+   339                           
+   340                           ; 2 bytes @ 0x9
+   341   00000A                     	ds	2
+   342   00000C                     calibrateMotor@i_200:
+   343                           	callstack 0
+   344                           
+   345                           ; 2 bytes @ 0xB
+   346   00000C                     	ds	2
+   347   00000E                     ??_main:
+   348                           
+   349                           ; 1 bytes @ 0xD
+   350   00000E                     	ds	1
+   351   00000F                     main@direction:
+   352                           	callstack 0
+   353                           
+   354                           ; 2 bytes @ 0xE
+   355   00000F                     	ds	2
+   356                           
+   357 ;;
+   358 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   359 ;;
+   360 ;; *************** function _main *****************
+   361 ;; Defined at:
+   362 ;;		line 140 in file "../../src/main.c"
+   363 ;; Parameters:    Size  Location     Type
+   364 ;;		None
+   365 ;; Auto vars:     Size  Location     Type
+   366 ;;  direction       2   14[COMRAM] int 
+   367 ;; Return value:  Size  Location     Type
+   368 ;;                  1    wreg      void 
+   369 ;; Registers used:
+   370 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   371 ;; Tracked objects:
+   372 ;;		On entry : 0/0
+   373 ;;		On exit  : 0/0
+   374 ;;		Unchanged: 0/0
+   375 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   376 ;;      Params:         0       0       0       0       0       0       0
+   377 ;;      Locals:         2       0       0       0       0       0       0
+   378 ;;      Temps:          1       0       0       0       0       0       0
+   379 ;;      Totals:         3       0       0       0       0       0       0
+   380 ;;Total ram usage:        3 bytes
+   381 ;; Hardware stack levels required when called: 2
+   382 ;; This function calls:
+   383 ;;		_calibrateMotor
+   384 ;;		_checkBtn
+   385 ;;		_rotateMotor
+   386 ;; This function is called by:
+   387 ;;		Startup code after reset
+   388 ;; This function uses a non-reentrant model
+   389 ;;
+   390                           
+   391                           	psect	text0
+   392   0007CA                     __ptext0:
+   393                           	callstack 0
+   394   0007CA                     _main:
+   395                           	callstack 29
+   396   0007CA                     
+   397                           ;../../src/main.c: 141:     ADCON1 = 0x0F;
+   398   0007CA  0E0F               	movlw	15
+   399   0007CC  6EC1               	movwf	193,c	;volatile
+   400   0007CE                     
+   401                           ;../../src/main.c: 143:     TRISB &= ~0x0F;
+   402   0007CE  0EF0               	movlw	240
+   403   0007D0  1693               	andwf	147,f,c	;volatile
+   404   0007D2                     
+   405                           ;../../src/main.c: 144:     TRISC |= 0x03;
+   406   0007D2  0E03               	movlw	3
+   407   0007D4  1294               	iorwf	148,f,c	;volatile
+   408   0007D6                     
+   409                           ;../../src/main.c: 145:     TRISD |= 0x03;
+   410   0007D6  0E03               	movlw	3
+   411   0007D8  1295               	iorwf	149,f,c	;volatile
+   412   0007DA                     
+   413                           ;../../src/main.c: 147:     calibrateMotor();
+   414   0007DA  EC05  F003         	call	_calibrateMotor	;wreg free
+   415   0007DE                     l973:
+   416                           
+   417                           ;../../src/main.c: 152:        _delay((unsigned long)((20)*(8000000/4000.0)));
+   418   0007DE  0E34               	movlw	52
+   419   0007E0  6E0E               	movwf	??_main^0,c
+   420   0007E2  0EF2               	movlw	242
+   421   0007E4                     u337:
+   422   0007E4  2EE8               	decfsz	wreg,f,c
+   423   0007E6  D7FE               	bra	u337
+   424   0007E8  2E0E               	decfsz	??_main^0,f,c
+   425   0007EA  D7FC               	bra	u337
+   426   0007EC                     
+   427                           ;../../src/main.c: 153:         direction = checkBtn();
+   428   0007EC  EC4B  F004         	call	_checkBtn	;wreg free
+   429   0007F0  C001  F00F         	movff	?_checkBtn,main@direction
+   430   0007F4  C002  F010         	movff	?_checkBtn+1,main@direction+1
+   431   0007F8                     
+   432                           ;../../src/main.c: 156:         if (direction == 1 && position < rightSteps) {
+   433   0007F8  040F               	decf	main@direction^0,w,c
+   434   0007FA  1010               	iorwf	(main@direction+1)^0,w,c
+   435   0007FC  A4D8               	btfss	status,2,c
+   436   0007FE  EF03  F004         	goto	u291
+   437   000802  EF05  F004         	goto	u290
+   438   000806                     u291:
+   439   000806  EF1E  F004         	goto	l985
+   440   00080A                     u290:
+   441   00080A  5013               	movf	_rightSteps^0,w,c
+   442   00080C  5C17               	subwf	_position^0,w,c
+   443   00080E  5018               	movf	(_position+1)^0,w,c
+   444   000810  0A80               	xorlw	128
+   445   000812  6E0E               	movwf	??_main^0,c
+   446   000814  5014               	movf	(_rightSteps+1)^0,w,c
+   447   000816  0A80               	xorlw	128
+   448   000818  580E               	subwfb	??_main^0,w,c
+   449   00081A  B0D8               	btfsc	status,0,c
+   450   00081C  EF12  F004         	goto	u301
+   451   000820  EF14  F004         	goto	u300
+   452   000824                     u301:
+   453   000824  EF1E  F004         	goto	l985
+   454   000828                     u300:
+   455   000828                     
+   456                           ;../../src/main.c: 157:             rotateMotor(1);
+   457   000828  0E00               	movlw	0
+   458   00082A  6E02               	movwf	(rotateMotor@direction+1)^0,c
+   459   00082C  0E01               	movlw	1
+   460   00082E  6E01               	movwf	rotateMotor@direction^0,c
+   461   000830  EC7D  F003         	call	_rotateMotor	;wreg free
+   462   000834                     
+   463                           ;../../src/main.c: 158:             position++;
+   464   000834  4A17               	infsnz	_position^0,f,c
+   465   000836  2A18               	incf	(_position+1)^0,f,c
+   466                           
+   467                           ;../../src/main.c: 159:         }
+   468   000838  EF40  F004         	goto	l993
+   469   00083C                     l985:
+   470   00083C  0E02               	movlw	2
+   471   00083E  180F               	xorwf	main@direction^0,w,c
+   472   000840  1010               	iorwf	(main@direction+1)^0,w,c
+   473   000842  A4D8               	btfss	status,2,c
+   474   000844  EF26  F004         	goto	u311
+   475   000848  EF28  F004         	goto	u310
+   476   00084C                     u311:
+   477   00084C  EF40  F004         	goto	l993
+   478   000850                     u310:
+   479   000850  5017               	movf	_position^0,w,c
+   480   000852  5C11               	subwf	_leftSteps^0,w,c
+   481   000854  5012               	movf	(_leftSteps+1)^0,w,c
+   482   000856  0A80               	xorlw	128
+   483   000858  6E0E               	movwf	??_main^0,c
+   484   00085A  5018               	movf	(_position+1)^0,w,c
+   485   00085C  0A80               	xorlw	128
+   486   00085E  580E               	subwfb	??_main^0,w,c
+   487   000860  B0D8               	btfsc	status,0,c
+   488   000862  EF35  F004         	goto	u321
+   489   000866  EF37  F004         	goto	u320
+   490   00086A                     u321:
+   491   00086A  EF40  F004         	goto	l993
+   492   00086E                     u320:
+   493   00086E                     
+   494                           ;../../src/main.c: 162:             rotateMotor(2);
+   495   00086E  0E00               	movlw	0
+   496   000870  6E02               	movwf	(rotateMotor@direction+1)^0,c
+   497   000872  0E02               	movlw	2
+   498   000874  6E01               	movwf	rotateMotor@direction^0,c
+   499   000876  EC7D  F003         	call	_rotateMotor	;wreg free
+   500   00087A                     
+   501                           ;../../src/main.c: 163:             position--;
+   502   00087A  0617               	decf	_position^0,f,c
+   503   00087C  A0D8               	btfss	status,0,c
+   504   00087E  0618               	decf	(_position+1)^0,f,c
+   505   000880                     l993:
+   506                           
+   507                           ;../../src/main.c: 165:        _delay((unsigned long)((20)*(8000000/4000.0)));
+   508   000880  0E34               	movlw	52
+   509   000882  6E0E               	movwf	??_main^0,c
+   510   000884  0EF2               	movlw	242
+   511   000886                     u347:
+   512   000886  2EE8               	decfsz	wreg,f,c
+   513   000888  D7FE               	bra	u347
+   514   00088A  2E0E               	decfsz	??_main^0,f,c
+   515   00088C  D7FC               	bra	u347
+   516   00088E  EFEF  F003         	goto	l973
+   517   000892  EFFE  F03F         	goto	start
+   518   000896                     __end_of_main:
+   519                           	callstack 0
+   520                           
+   521 ;; *************** function _checkBtn *****************
+   522 ;; Defined at:
+   523 ;;		line 82 in file "../../src/main.c"
+   524 ;; Parameters:    Size  Location     Type
+   525 ;;		None
+   526 ;; Auto vars:     Size  Location     Type
+   527 ;;		None
+   528 ;; Return value:  Size  Location     Type
+   529 ;;                  2    0[COMRAM] int 
+   530 ;; Registers used:
+   531 ;;		wreg, status,2
+   532 ;; Tracked objects:
+   533 ;;		On entry : 0/0
+   534 ;;		On exit  : 0/0
+   535 ;;		Unchanged: 0/0
+   536 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   537 ;;      Params:         2       0       0       0       0       0       0
+   538 ;;      Locals:         0       0       0       0       0       0       0
+   539 ;;      Temps:          1       0       0       0       0       0       0
+   540 ;;      Totals:         3       0       0       0       0       0       0
+   541 ;;Total ram usage:        3 bytes
+   542 ;; Hardware stack levels used: 1
+   543 ;; This function calls:
+   544 ;;		Nothing
+   545 ;; This function is called by:
+   546 ;;		_main
+   547 ;; This function uses a non-reentrant model
+   548 ;;
+   549                           
+   550                           	psect	text1
+   551   000896                     __ptext1:
+   552                           	callstack 0
+   553   000896                     _checkBtn:
+   554                           	callstack 30
+   555   000896                     
+   556                           ;../../src/main.c: 83:     if (PORTDbits.RD0 != PORTDbits. RD1) {
+   557   000896  B283               	btfsc	131,1,c	;volatile
+   558   000898  EF50  F004         	goto	u211
+   559   00089C  EF53  F004         	goto	u210
+   560   0008A0                     u211:
+   561   0008A0  0E01               	movlw	1
+   562   0008A2  EF54  F004         	goto	u212
+   563   0008A6                     u210:
+   564   0008A6  0E00               	movlw	0
+   565   0008A8                     u212:
+   566   0008A8  6E03               	movwf	??_checkBtn^0,c
+   567   0008AA  B083               	btfsc	131,0,c	;volatile
+   568   0008AC  EF5A  F004         	goto	u221
+   569   0008B0  EF5D  F004         	goto	u220
+   570   0008B4                     u221:
+   571   0008B4  0E01               	movlw	1
+   572   0008B6  EF5E  F004         	goto	u222
+   573   0008BA                     u220:
+   574   0008BA  0E00               	movlw	0
+   575   0008BC                     u222:
+   576   0008BC  1A03               	xorwf	??_checkBtn^0,f,c
+   577   0008BE  B4D8               	btfsc	status,2,c
+   578   0008C0  EF64  F004         	goto	u231
+   579   0008C4  EF66  F004         	goto	u230
+   580   0008C8                     u231:
+   581   0008C8  EF79  F004         	goto	l919
+   582   0008CC                     u230:
+   583   0008CC                     
+   584                           ;../../src/main.c: 84:         if (!PORTDbits.RD0) {
+   585   0008CC  B083               	btfsc	131,0,c	;volatile
+   586   0008CE  EF6B  F004         	goto	u241
+   587   0008D2  EF6D  F004         	goto	u240
+   588   0008D6                     u241:
+   589   0008D6  EF73  F004         	goto	l915
+   590   0008DA                     u240:
+   591   0008DA                     
+   592                           ;../../src/main.c: 85:             return 1;
+   593   0008DA  0E00               	movlw	0
+   594   0008DC  6E02               	movwf	(?_checkBtn+1)^0,c
+   595   0008DE  0E01               	movlw	1
+   596   0008E0  6E01               	movwf	?_checkBtn^0,c
+   597   0008E2  EF7D  F004         	goto	l33
+   598   0008E6                     l915:
+   599                           
+   600                           ;../../src/main.c: 87:             return 2;
+   601   0008E6  0E00               	movlw	0
+   602   0008E8  6E02               	movwf	(?_checkBtn+1)^0,c
+   603   0008EA  0E02               	movlw	2
+   604   0008EC  6E01               	movwf	?_checkBtn^0,c
+   605   0008EE  EF7D  F004         	goto	l33
+   606   0008F2                     l919:
+   607                           
+   608                           ;../../src/main.c: 91:         return 0;
+   609   0008F2  0E00               	movlw	0
+   610   0008F4  6E02               	movwf	(?_checkBtn+1)^0,c
+   611   0008F6  0E00               	movlw	0
+   612   0008F8  6E01               	movwf	?_checkBtn^0,c
+   613   0008FA                     l33:
+   614   0008FA  0012               	return		;funcret
+   615   0008FC                     __end_of_checkBtn:
+   616                           	callstack 0
+   617                           
+   618 ;; *************** function _calibrateMotor *****************
+   619 ;; Defined at:
+   620 ;;		line 116 in file "../../src/main.c"
+   621 ;; Parameters:    Size  Location     Type
+   622 ;;		None
+   623 ;; Auto vars:     Size  Location     Type
+   624 ;;  i               2   11[COMRAM] int 
+   625 ;;  i               2    9[COMRAM] int 
+   626 ;; Return value:  Size  Location     Type
+   627 ;;                  1    wreg      void 
+   628 ;; Registers used:
+   629 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   630 ;; Tracked objects:
+   631 ;;		On entry : 0/0
+   632 ;;		On exit  : 0/0
+   633 ;;		Unchanged: 0/0
+   634 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   635 ;;      Params:         0       0       0       0       0       0       0
+   636 ;;      Locals:         4       0       0       0       0       0       0
+   637 ;;      Temps:          1       0       0       0       0       0       0
+   638 ;;      Totals:         5       0       0       0       0       0       0
+   639 ;;Total ram usage:        5 bytes
+   640 ;; Hardware stack levels used: 1
+   641 ;; Hardware stack levels required when called: 1
+   642 ;; This function calls:
+   643 ;;		_rotateMotor
+   644 ;; This function is called by:
+   645 ;;		_main
+   646 ;; This function uses a non-reentrant model
+   647 ;;
+   648                           
+   649                           	psect	text2
+   650   00060A                     __ptext2:
+   651                           	callstack 0
+   652   00060A                     _calibrateMotor:
+   653                           	callstack 29
+   654   00060A                     
+   655                           ;../../src/main.c: 117:     rightSteps = 0;
+   656   00060A  0E00               	movlw	0
+   657   00060C  6E14               	movwf	(_rightSteps+1)^0,c
+   658   00060E  0E00               	movlw	0
+   659   000610  6E13               	movwf	_rightSteps^0,c
+   660                           
+   661                           ;../../src/main.c: 118:     leftSteps = 0;
+   662   000612  0E00               	movlw	0
+   663   000614  6E12               	movwf	(_leftSteps+1)^0,c
+   664   000616  0E00               	movlw	0
+   665   000618  6E11               	movwf	_leftSteps^0,c
+   666                           
+   667                           ;../../src/main.c: 119:     position = 0;
+   668   00061A  0E00               	movlw	0
+   669   00061C  6E18               	movwf	(_position+1)^0,c
+   670   00061E  0E00               	movlw	0
+   671   000620  6E17               	movwf	_position^0,c
+   672                           
+   673                           ;../../src/main.c: 121:     while (!PORTCbits.RC0) {
+   674   000622  EF1B  F003         	goto	l929
+   675   000626                     l925:
+   676                           
+   677                           ;../../src/main.c: 122:         rotateMotor(1);
+   678   000626  0E00               	movlw	0
+   679   000628  6E02               	movwf	(rotateMotor@direction+1)^0,c
+   680   00062A  0E01               	movlw	1
+   681   00062C  6E01               	movwf	rotateMotor@direction^0,c
+   682   00062E  EC7D  F003         	call	_rotateMotor	;wreg free
+   683   000632                     
+   684                           ;../../src/main.c: 123:         rightSteps++;
+   685   000632  4A13               	infsnz	_rightSteps^0,f,c
+   686   000634  2A14               	incf	(_rightSteps+1)^0,f,c
+   687   000636                     l929:
+   688                           
+   689                           ;../../src/main.c: 121:     while (!PORTCbits.RC0) {
+   690   000636  A082               	btfss	130,0,c	;volatile
+   691   000638  EF20  F003         	goto	u251
+   692   00063C  EF22  F003         	goto	u250
+   693   000640                     u251:
+   694   000640  EF13  F003         	goto	l925
+   695   000644                     u250:
+   696   000644                     
+   697                           ;../../src/main.c: 125:     for (int i = 0; i < rightSteps; i++) {
+   698   000644  0E00               	movlw	0
+   699   000646  6E0B               	movwf	(calibrateMotor@i+1)^0,c
+   700   000648  0E00               	movlw	0
+   701   00064A  6E0A               	movwf	calibrateMotor@i^0,c
+   702   00064C  EF38  F003         	goto	l939
+   703   000650                     l933:
+   704                           
+   705                           ;../../src/main.c: 126:         rotateMotor(2);
+   706   000650  0E00               	movlw	0
+   707   000652  6E02               	movwf	(rotateMotor@direction+1)^0,c
+   708   000654  0E02               	movlw	2
+   709   000656  6E01               	movwf	rotateMotor@direction^0,c
+   710   000658  EC7D  F003         	call	_rotateMotor	;wreg free
+   711   00065C                     
+   712                           ;../../src/main.c: 127:         _delay((unsigned long)((10)*(8000000/4000.0)));
+   713   00065C  0E1A               	movlw	26
+   714   00065E  6E09               	movwf	??_calibrateMotor^0,c
+   715   000660  0EF8               	movlw	248
+   716   000662                     u357:
+   717   000662  2EE8               	decfsz	wreg,f,c
+   718   000664  D7FE               	bra	u357
+   719   000666  2E09               	decfsz	??_calibrateMotor^0,f,c
+   720   000668  D7FC               	bra	u357
+   721   00066A  D000               	nop2	
+   722   00066C                     
+   723                           ;../../src/main.c: 128:     }
+   724   00066C  4A0A               	infsnz	calibrateMotor@i^0,f,c
+   725   00066E  2A0B               	incf	(calibrateMotor@i+1)^0,f,c
+   726   000670                     l939:
+   727   000670  5013               	movf	_rightSteps^0,w,c
+   728   000672  5C0A               	subwf	calibrateMotor@i^0,w,c
+   729   000674  500B               	movf	(calibrateMotor@i+1)^0,w,c
+   730   000676  0A80               	xorlw	128
+   731   000678  6E09               	movwf	??_calibrateMotor^0,c
+   732   00067A  5014               	movf	(_rightSteps+1)^0,w,c
+   733   00067C  0A80               	xorlw	128
+   734   00067E  5809               	subwfb	??_calibrateMotor^0,w,c
+   735   000680  A0D8               	btfss	status,0,c
+   736   000682  EF45  F003         	goto	u261
+   737   000686  EF47  F003         	goto	u260
+   738   00068A                     u261:
+   739   00068A  EF28  F003         	goto	l933
+   740   00068E                     u260:
+   741   00068E  EF52  F003         	goto	l945
+   742   000692                     l941:
+   743                           
+   744                           ;../../src/main.c: 130:         rotateMotor(2);
+   745   000692  0E00               	movlw	0
+   746   000694  6E02               	movwf	(rotateMotor@direction+1)^0,c
+   747   000696  0E02               	movlw	2
+   748   000698  6E01               	movwf	rotateMotor@direction^0,c
+   749   00069A  EC7D  F003         	call	_rotateMotor	;wreg free
+   750   00069E                     
+   751                           ;../../src/main.c: 131:         leftSteps--;
+   752   00069E  0611               	decf	_leftSteps^0,f,c
+   753   0006A0  A0D8               	btfss	status,0,c
+   754   0006A2  0612               	decf	(_leftSteps+1)^0,f,c
+   755   0006A4                     l945:
+   756                           
+   757                           ;../../src/main.c: 129:     while (!PORTCbits.RC1) {
+   758   0006A4  A282               	btfss	130,1,c	;volatile
+   759   0006A6  EF57  F003         	goto	u271
+   760   0006AA  EF59  F003         	goto	u270
+   761   0006AE                     u271:
+   762   0006AE  EF49  F003         	goto	l941
+   763   0006B2                     u270:
+   764   0006B2                     
+   765                           ;../../src/main.c: 133:     for (int i = leftSteps; i < 0; i++) {
+   766   0006B2  C011  F00C         	movff	_leftSteps,calibrateMotor@i_200
+   767   0006B6  C012  F00D         	movff	_leftSteps+1,calibrateMotor@i_200+1
+   768   0006BA                     l947:
+   769   0006BA  BE0D               	btfsc	(calibrateMotor@i_200+1)^0,7,c
+   770   0006BC  EF62  F003         	goto	u281
+   771   0006C0  EF64  F003         	goto	u280
+   772   0006C4                     u281:
+   773   0006C4  EF66  F003         	goto	l951
+   774   0006C8                     u280:
+   775   0006C8  EF78  F003         	goto	l959
+   776   0006CC                     l951:
+   777                           
+   778                           ;../../src/main.c: 134:         rotateMotor(1);
+   779   0006CC  0E00               	movlw	0
+   780   0006CE  6E02               	movwf	(rotateMotor@direction+1)^0,c
+   781   0006D0  0E01               	movlw	1
+   782   0006D2  6E01               	movwf	rotateMotor@direction^0,c
+   783   0006D4  EC7D  F003         	call	_rotateMotor	;wreg free
+   784   0006D8                     
+   785                           ;../../src/main.c: 135:         _delay((unsigned long)((10)*(8000000/4000.0)));
+   786   0006D8  0E1A               	movlw	26
+   787   0006DA  6E09               	movwf	??_calibrateMotor^0,c
+   788   0006DC  0EF8               	movlw	248
+   789   0006DE                     u367:
+   790   0006DE  2EE8               	decfsz	wreg,f,c
+   791   0006E0  D7FE               	bra	u367
+   792   0006E2  2E09               	decfsz	??_calibrateMotor^0,f,c
+   793   0006E4  D7FC               	bra	u367
+   794   0006E6  D000               	nop2	
+   795   0006E8                     
+   796                           ;../../src/main.c: 136:     }
+   797   0006E8  4A0C               	infsnz	calibrateMotor@i_200^0,f,c
+   798   0006EA  2A0D               	incf	(calibrateMotor@i_200+1)^0,f,c
+   799   0006EC  EF5D  F003         	goto	l947
+   800   0006F0                     l959:
+   801                           
+   802                           ;../../src/main.c: 137:     position = 0;
+   803   0006F0  0E00               	movlw	0
+   804   0006F2  6E18               	movwf	(_position+1)^0,c
+   805   0006F4  0E00               	movlw	0
+   806   0006F6  6E17               	movwf	_position^0,c
+   807   0006F8  0012               	return		;funcret
+   808   0006FA                     __end_of_calibrateMotor:
+   809                           	callstack 0
+   810                           
+   811 ;; *************** function _rotateMotor *****************
+   812 ;; Defined at:
+   813 ;;		line 95 in file "../../src/main.c"
+   814 ;; Parameters:    Size  Location     Type
+   815 ;;  direction       2    0[COMRAM] int 
+   816 ;; Auto vars:     Size  Location     Type
+   817 ;;  i               2    6[COMRAM] int 
+   818 ;;  i               2    4[COMRAM] int 
+   819 ;; Return value:  Size  Location     Type
+   820 ;;                  1    wreg      void 
+   821 ;; Registers used:
+   822 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru
+   823 ;; Tracked objects:
+   824 ;;		On entry : 0/0
+   825 ;;		On exit  : 0/0
+   826 ;;		Unchanged: 0/0
+   827 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   828 ;;      Params:         2       0       0       0       0       0       0
+   829 ;;      Locals:         4       0       0       0       0       0       0
+   830 ;;      Temps:          2       0       0       0       0       0       0
+   831 ;;      Totals:         8       0       0       0       0       0       0
+   832 ;;Total ram usage:        8 bytes
+   833 ;; Hardware stack levels used: 1
+   834 ;; This function calls:
+   835 ;;		Nothing
+   836 ;; This function is called by:
+   837 ;;		_calibrateMotor
+   838 ;;		_main
+   839 ;; This function uses a non-reentrant model
+   840 ;;
+   841                           
+   842                           	psect	text3
+   843   0006FA                     __ptext3:
+   844                           	callstack 0
+   845   0006FA                     _rotateMotor:
+   846                           	callstack 30
+   847   0006FA                     
+   848                           ;../../src/main.c: 96:     if (direction == 1) {
+   849   0006FA  0401               	decf	rotateMotor@direction^0,w,c
+   850   0006FC  1002               	iorwf	(rotateMotor@direction+1)^0,w,c
+   851   0006FE  A4D8               	btfss	status,2,c
+   852   000700  EF84  F003         	goto	u171
+   853   000704  EF86  F003         	goto	u170
+   854   000708                     u171:
+   855   000708  EFAF  F003         	goto	l887
+   856   00070C                     u170:
+   857   00070C                     
+   858                           ;../../src/main.c: 98:         for (int i = 0; i < 4; i++) {
+   859   00070C  0E00               	movlw	0
+   860   00070E  6E06               	movwf	(rotateMotor@i+1)^0,c
+   861   000710  0E00               	movlw	0
+   862   000712  6E05               	movwf	rotateMotor@i^0,c
+   863   000714                     l879:
+   864                           
+   865                           ;../../src/main.c: 99:             LATB = (LATB & 0xF0) | steps_cw[i];
+   866   000714  5005               	movf	rotateMotor@i^0,w,c
+   867   000716  0F05               	addlw	low _steps_cw
+   868   000718  6E03               	movwf	??_rotateMotor^0,c
+   869   00071A  C003  FFF6         	movff	??_rotateMotor,tblptrl
+   870   00071E                     	if	0	;There is only one active tblptr byte
+   871   00071E                     	endif
+   872   00071E                     	if	0	;tblptru may be non-zero
+   873   00071E                     	endif
+   874   00071E                     	if	0	;tblptru may be non-zero
+   875   00071E                     	endif
+   876   00071E  0008               	tblrd		*
+   877   000720  CFF5 F004          	movff	tablat,??_rotateMotor+1
+   878   000724  508A               	movf	138,w,c	;volatile
+   879   000726  0BF0               	andlw	240
+   880   000728  1004               	iorwf	(??_rotateMotor+1)^0,w,c
+   881   00072A  6E8A               	movwf	138,c	;volatile
+   882   00072C                     
+   883                           ;../../src/main.c: 100:             _delay((unsigned long)((50)*(8000000/4000.0)));
+   884   00072C  0E82               	movlw	130
+   885   00072E  6E03               	movwf	??_rotateMotor^0,c
+   886   000730  0EDE               	movlw	222
+   887   000732                     u377:
+   888   000732  2EE8               	decfsz	wreg,f,c
+   889   000734  D7FE               	bra	u377
+   890   000736  2E03               	decfsz	??_rotateMotor^0,f,c
+   891   000738  D7FC               	bra	u377
+   892   00073A                     
+   893                           ;../../src/main.c: 101:         }
+   894   00073A  4A05               	infsnz	rotateMotor@i^0,f,c
+   895   00073C  2A06               	incf	(rotateMotor@i+1)^0,f,c
+   896   00073E  BE06               	btfsc	(rotateMotor@i+1)^0,7,c
+   897   000740  EFAB  F003         	goto	u181
+   898   000744  5006               	movf	(rotateMotor@i+1)^0,w,c
+   899   000746  E109               	bnz	u180
+   900   000748  0E04               	movlw	4
+   901   00074A  5C05               	subwf	rotateMotor@i^0,w,c
+   902   00074C  A0D8               	btfss	status,0,c
+   903   00074E  EFAB  F003         	goto	u181
+   904   000752  EFAD  F003         	goto	u180
+   905   000756                     u181:
+   906   000756  EF8A  F003         	goto	l879
+   907   00075A                     u180:
+   908   00075A  EFE4  F003         	goto	l46
+   909   00075E                     l887:
+   910   00075E  0E02               	movlw	2
+   911   000760  1801               	xorwf	rotateMotor@direction^0,w,c
+   912   000762  1002               	iorwf	(rotateMotor@direction+1)^0,w,c
+   913   000764  A4D8               	btfss	status,2,c
+   914   000766  EFB7  F003         	goto	u191
+   915   00076A  EFB9  F003         	goto	u190
+   916   00076E                     u191:
+   917   00076E  EFE2  F003         	goto	l903
+   918   000772                     u190:
+   919   000772                     
+   920                           ;../../src/main.c: 105:         for (int i = 0; i < 4; i++) {
+   921   000772  0E00               	movlw	0
+   922   000774  6E08               	movwf	(rotateMotor@i_188+1)^0,c
+   923   000776  0E00               	movlw	0
+   924   000778  6E07               	movwf	rotateMotor@i_188^0,c
+   925   00077A                     l895:
+   926                           
+   927                           ;../../src/main.c: 106:             LATB = (LATB & 0xF0) | steps_ccw[i];
+   928   00077A  5007               	movf	rotateMotor@i_188^0,w,c
+   929   00077C  0F01               	addlw	low _steps_ccw
+   930   00077E  6E03               	movwf	??_rotateMotor^0,c
+   931   000780  C003  FFF6         	movff	??_rotateMotor,tblptrl
+   932   000784                     	if	0	;There is only one active tblptr byte
+   933   000784                     	endif
+   934   000784                     	if	0	;tblptru may be non-zero
+   935   000784                     	endif
+   936   000784                     	if	0	;tblptru may be non-zero
+   937   000784                     	endif
+   938   000784  0008               	tblrd		*
+   939   000786  CFF5 F004          	movff	tablat,??_rotateMotor+1
+   940   00078A  508A               	movf	138,w,c	;volatile
+   941   00078C  0BF0               	andlw	240
+   942   00078E  1004               	iorwf	(??_rotateMotor+1)^0,w,c
+   943   000790  6E8A               	movwf	138,c	;volatile
+   944   000792                     
+   945                           ;../../src/main.c: 107:             _delay((unsigned long)((50)*(8000000/4000.0)));
+   946   000792  0E82               	movlw	130
+   947   000794  6E03               	movwf	??_rotateMotor^0,c
+   948   000796  0EDE               	movlw	222
+   949   000798                     u387:
+   950   000798  2EE8               	decfsz	wreg,f,c
+   951   00079A  D7FE               	bra	u387
+   952   00079C  2E03               	decfsz	??_rotateMotor^0,f,c
+   953   00079E  D7FC               	bra	u387
+   954   0007A0                     
+   955                           ;../../src/main.c: 108:         }
+   956   0007A0  4A07               	infsnz	rotateMotor@i_188^0,f,c
+   957   0007A2  2A08               	incf	(rotateMotor@i_188+1)^0,f,c
+   958   0007A4  BE08               	btfsc	(rotateMotor@i_188+1)^0,7,c
+   959   0007A6  EFDE  F003         	goto	u201
+   960   0007AA  5008               	movf	(rotateMotor@i_188+1)^0,w,c
+   961   0007AC  E109               	bnz	u200
+   962   0007AE  0E04               	movlw	4
+   963   0007B0  5C07               	subwf	rotateMotor@i_188^0,w,c
+   964   0007B2  A0D8               	btfss	status,0,c
+   965   0007B4  EFDE  F003         	goto	u201
+   966   0007B8  EFE0  F003         	goto	u200
+   967   0007BC                     u201:
+   968   0007BC  EFBD  F003         	goto	l895
+   969   0007C0                     u200:
+   970   0007C0  EFE4  F003         	goto	l46
+   971   0007C4                     l903:
+   972                           
+   973                           ;../../src/main.c: 112:         LATB &= 0xF0;
+   974   0007C4  0EF0               	movlw	240
+   975   0007C6  168A               	andwf	138,f,c	;volatile
+   976   0007C8                     l46:
+   977   0007C8  0012               	return		;funcret
+   978   0007CA                     __end_of_rotateMotor:
+   979                           	callstack 0
+   980                           
+   981                           	psect	rparam
+   982   000001                     ___rparam_used  equ	1
+   983   000000                     ___param_bank   equ	0
+   984   000000                     __Lparam        equ	__Lrparam
+   985   000000                     __Hparam        equ	__Hrparam
+   986                           
+   987                           	psect	idloc
+   988                           
+   989                           ;Config register IDLOC0 @ 0x200000
+   990                           ;	unspecified, using default values
+   991   200000                     	org	2097152
+   992   200000  FF                 	db	255
+   993                           
+   994                           ;Config register IDLOC1 @ 0x200001
+   995                           ;	unspecified, using default values
+   996   200001                     	org	2097153
+   997   200001  FF                 	db	255
+   998                           
+   999                           ;Config register IDLOC2 @ 0x200002
+  1000                           ;	unspecified, using default values
+  1001   200002                     	org	2097154
+  1002   200002  FF                 	db	255
+  1003                           
+  1004                           ;Config register IDLOC3 @ 0x200003
+  1005                           ;	unspecified, using default values
+  1006   200003                     	org	2097155
+  1007   200003  FF                 	db	255
+  1008                           
+  1009                           ;Config register IDLOC4 @ 0x200004
+  1010                           ;	unspecified, using default values
+  1011   200004                     	org	2097156
+  1012   200004  FF                 	db	255
+  1013                           
+  1014                           ;Config register IDLOC5 @ 0x200005
+  1015                           ;	unspecified, using default values
+  1016   200005                     	org	2097157
+  1017   200005  FF                 	db	255
+  1018                           
+  1019                           ;Config register IDLOC6 @ 0x200006
+  1020                           ;	unspecified, using default values
+  1021   200006                     	org	2097158
+  1022   200006  FF                 	db	255
+  1023                           
+  1024                           ;Config register IDLOC7 @ 0x200007
+  1025                           ;	unspecified, using default values
+  1026   200007                     	org	2097159
+  1027   200007  FF                 	db	255
+  1028                           
+  1029                           	psect	config
+  1030                           
+  1031                           ; Padding undefined space
+  1032   300000                     	org	3145728
+  1033   300000  FF                 	db	255
+  1034                           
+  1035                           ;Config register CONFIG1H @ 0x300001
+  1036                           ;	Oscillator Selection bits
+  1037                           ;	OSC = INTIO67, Internal oscillator block, port function on RA6 and RA7
+  1038                           ;	Fail-Safe Clock Monitor Enable bit
+  1039                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  1040                           ;	Internal/External Oscillator Switchover bit
+  1041                           ;	IESO = OFF, Oscillator Switchover mode disabled
+  1042   300001                     	org	3145729
+  1043   300001  08                 	db	8
+  1044                           
+  1045                           ;Config register CONFIG2L @ 0x300002
+  1046                           ;	Power-up Timer Enable bit
+  1047                           ;	PWRT = OFF, PWRT disabled
+  1048                           ;	Brown-out Reset Enable bits
+  1049                           ;	BOREN = SBORDIS, Brown-out Reset enabled in hardware only (SBOREN is disabled)
+  1050                           ;	Brown Out Reset Voltage bits
+  1051                           ;	BORV = 3, Minimum setting
+  1052   300002                     	org	3145730
+  1053   300002  1F                 	db	31
+  1054                           
+  1055                           ;Config register CONFIG2H @ 0x300003
+  1056                           ;	Watchdog Timer Enable bit
+  1057                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+  1058                           ;	Watchdog Timer Postscale Select bits
+  1059                           ;	WDTPS = 32768, 1:32768
+  1060   300003                     	org	3145731
+  1061   300003  1E                 	db	30
+  1062                           
+  1063                           ; Padding undefined space
+  1064   300004                     	org	3145732
+  1065   300004  FF                 	db	255
+  1066                           
+  1067                           ;Config register CONFIG3H @ 0x300005
+  1068                           ;	CCP2 MUX bit
+  1069                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+  1070                           ;	PORTB A/D Enable bit
+  1071                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+  1072                           ;	Low-Power Timer1 Oscillator Enable bit
+  1073                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  1074                           ;	MCLR Pin Enable bit
+  1075                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+  1076   300005                     	org	3145733
+  1077   300005  81                 	db	129
+  1078                           
+  1079                           ;Config register CONFIG4L @ 0x300006
+  1080                           ;	Stack Full/Underflow Reset Enable bit
+  1081                           ;	STVREN = OFF, Stack full/underflow will not cause Reset
+  1082                           ;	Single-Supply ICSP Enable bit
+  1083                           ;	LVP = OFF, Single-Supply ICSP disabled
+  1084                           ;	Extended Instruction Set Enable bit
+  1085                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+  1086                           ;	Background Debugger Enable bit
+  1087                           ;	DEBUG = 0x1, unprogrammed default
+  1088   300006                     	org	3145734
+  1089   300006  80                 	db	128
+  1090                           
+  1091                           ; Padding undefined space
+  1092   300007                     	org	3145735
+  1093   300007  FF                 	db	255
+  1094                           
+  1095                           ;Config register CONFIG5L @ 0x300008
+  1096                           ;	Code Protection bit
+  1097                           ;	CP0 = OFF, Block 0 (000800-001FFFh) not code-protected
+  1098                           ;	Code Protection bit
+  1099                           ;	CP1 = OFF, Block 1 (002000-003FFFh) not code-protected
+  1100                           ;	Code Protection bit
+  1101                           ;	CP2 = OFF, Block 2 (004000-005FFFh) not code-protected
+  1102                           ;	Code Protection bit
+  1103                           ;	CP3 = OFF, Block 3 (006000-007FFFh) not code-protected
+  1104   300008                     	org	3145736
+  1105   300008  0F                 	db	15
+  1106                           
+  1107                           ;Config register CONFIG5H @ 0x300009
+  1108                           ;	Boot Block Code Protection bit
+  1109                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+  1110                           ;	Data EEPROM Code Protection bit
+  1111                           ;	CPD = OFF, Data EEPROM not code-protected
+  1112   300009                     	org	3145737
+  1113   300009  C0                 	db	192
+  1114                           
+  1115                           ;Config register CONFIG6L @ 0x30000A
+  1116                           ;	Write Protection bit
+  1117                           ;	WRT0 = OFF, Block 0 (000800-001FFFh) not write-protected
+  1118                           ;	Write Protection bit
+  1119                           ;	WRT1 = OFF, Block 1 (002000-003FFFh) not write-protected
+  1120                           ;	Write Protection bit
+  1121                           ;	WRT2 = OFF, Block 2 (004000-005FFFh) not write-protected
+  1122                           ;	Write Protection bit
+  1123                           ;	WRT3 = OFF, Block 3 (006000-007FFFh) not write-protected
+  1124   30000A                     	org	3145738
+  1125   30000A  0F                 	db	15
+  1126                           
+  1127                           ;Config register CONFIG6H @ 0x30000B
+  1128                           ;	Configuration Register Write Protection bit
+  1129                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  1130                           ;	Boot Block Write Protection bit
+  1131                           ;	WRTB = OFF, Boot block (000000-0007FFh) not write-protected
+  1132                           ;	Data EEPROM Write Protection bit
+  1133                           ;	WRTD = OFF, Data EEPROM not write-protected
+  1134   30000B                     	org	3145739
+  1135   30000B  E0                 	db	224
+  1136                           
+  1137                           ;Config register CONFIG7L @ 0x30000C
+  1138                           ;	Table Read Protection bit
+  1139                           ;	EBTR0 = OFF, Block 0 (000800-001FFFh) not protected from table reads executed in other
+      +                           blocks
+  1140                           ;	Table Read Protection bit
+  1141                           ;	EBTR1 = OFF, Block 1 (002000-003FFFh) not protected from table reads executed in other
+      +                           blocks
+  1142                           ;	Table Read Protection bit
+  1143                           ;	EBTR2 = OFF, Block 2 (004000-005FFFh) not protected from table reads executed in other
+      +                           blocks
+  1144                           ;	Table Read Protection bit
+  1145                           ;	EBTR3 = OFF, Block 3 (006000-007FFFh) not protected from table reads executed in other
+      +                           blocks
+  1146   30000C                     	org	3145740
+  1147   30000C  0F                 	db	15
+  1148                           
+  1149                           ;Config register CONFIG7H @ 0x30000D
+  1150                           ;	Boot Block Table Read Protection bit
+  1151                           ;	EBTRB = OFF, Boot block (000000-0007FFh) not protected from table reads executed in ot
+      +                          her blocks
+  1152   30000D                     	org	3145741
+  1153   30000D  40                 	db	64
+  1154                           tosu	equ	0xFFF
+  1155                           tosh	equ	0xFFE
+  1156                           tosl	equ	0xFFD
+  1157                           stkptr	equ	0xFFC
+  1158                           pclatu	equ	0xFFB
+  1159                           pclath	equ	0xFFA
+  1160                           pcl	equ	0xFF9
+  1161                           tblptru	equ	0xFF8
+  1162                           tblptrh	equ	0xFF7
+  1163                           tblptrl	equ	0xFF6
+  1164                           tablat	equ	0xFF5
+  1165                           prodh	equ	0xFF4
+  1166                           prodl	equ	0xFF3
+  1167                           indf0	equ	0xFEF
+  1168                           postinc0	equ	0xFEE
+  1169                           postdec0	equ	0xFED
+  1170                           preinc0	equ	0xFEC
+  1171                           plusw0	equ	0xFEB
+  1172                           fsr0h	equ	0xFEA
+  1173                           fsr0l	equ	0xFE9
+  1174                           wreg	equ	0xFE8
+  1175                           indf1	equ	0xFE7
+  1176                           postinc1	equ	0xFE6
+  1177                           postdec1	equ	0xFE5
+  1178                           preinc1	equ	0xFE4
+  1179                           plusw1	equ	0xFE3
+  1180                           fsr1h	equ	0xFE2
+  1181                           fsr1l	equ	0xFE1
+  1182                           bsr	equ	0xFE0
+  1183                           indf2	equ	0xFDF
+  1184                           postinc2	equ	0xFDE
+  1185                           postdec2	equ	0xFDD
+  1186                           preinc2	equ	0xFDC
+  1187                           plusw2	equ	0xFDB
+  1188                           fsr2h	equ	0xFDA
+  1189                           fsr2l	equ	0xFD9
+  1190                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    8
+    Data        0
+    BSS         8
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     16      24
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_calibrateMotor
+    _calibrateMotor->_rotateMotor
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 3     3      0     488
+                                             13 COMRAM     3     3      0
+                     _calibrateMotor
+                           _checkBtn
+                        _rotateMotor
+ ---------------------------------------------------------------------------------
+ (1) _checkBtn                                             3     1      2       0
+                                              0 COMRAM     3     1      2
+ ---------------------------------------------------------------------------------
+ (1) _calibrateMotor                                       5     5      0     256
+                                              8 COMRAM     5     5      0
+                        _rotateMotor
+ ---------------------------------------------------------------------------------
+ (1) _rotateMotor                                          8     6      2     186
+                                              0 COMRAM     8     6      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _calibrateMotor
+     _rotateMotor
+   _checkBtn
+   _rotateMotor
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BIGRAM            1535      0       0      0.0%
+BITBANK5           256      0       0      0.0%
+BANK5              256      0       0      0.0%
+BITBANK4           256      0       0      0.0%
+BANK4              256      0       0      0.0%
+BITBANK3           256      0       0      0.0%
+BANK3              256      0       0      0.0%
+BITBANK2           256      0       0      0.0%
+BANK2              256      0       0      0.0%
+BITBANK1           256      0       0      0.0%
+BANK1              256      0       0      0.0%
+BITBANK0           128      0       0      0.0%
+BANK0              128      0       0      0.0%
+BITCOMRAM          127      0       0      0.0%
+COMRAM             127     16      24     18.9%
+BITBIGSFRh         124      0       0      0.0%
+BITBIGSFRl           2      0       0      0.0%
+STACK                0      0       0      0.0%
+DATA                 0      0      24      0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V3.00 build 20241204225717 
+Symbol Table                                                                                   Tue Sep 30 14:38:31 2025
+
+        ?_calibrateMotor 0001              _rotateMotor 06FA                       l33 08FA  
+                     l60 06F8                       l46 07C8                       l57 06B2  
+                    l901 07A4                      l903 07C4                      l905 0896  
+                    l931 0644                      l923 060A                      l915 08E6  
+                    l907 08CC                      l941 0692                      l933 0650  
+                    l925 0626                      l909 08DA                      l871 06FA  
+                    l951 06CC                      l943 069E                      l935 065C  
+                    l927 0632                      l919 08F2                      l881 072C  
+                    l873 070C                      l953 06D8                      l945 06A4  
+                    l937 066C                      l929 0636                      l961 07CA  
+                    l883 073A                      l955 06E8                      l947 06BA  
+                    l939 0670                      l971 07DE                      l963 07CE  
+                    l885 073E                      l981 0828                      l973 07DE  
+                    l965 07D2                      l895 077A                      l879 0714  
+                    l887 075E                      l959 06F0                      l991 087A  
+                    l983 0834                      l975 07EC                      l967 07D6  
+                    l897 0792                      l889 0772                      l993 0880  
+                    l985 083C                      l977 07F8                      l969 07DA  
+                    l899 07A0                      l987 0850                      l979 080A  
+                    l989 086E                      u200 07C0                      u201 07BC  
+                    u210 08A6                      u211 08A0                      u220 08BA  
+                    u212 08A8                      u300 0828                      u221 08B4  
+                    u301 0824                      u230 08CC                      u222 08BC  
+                    u310 0850                      u231 08C8                      u311 084C  
+                    u240 08DA                      u320 086E                      u241 08D6  
+                    u321 086A                      u170 070C                      u250 0644  
+                    u171 0708                      u251 0640                      u180 075A  
+                    u260 068E                      u181 0756                      u261 068A  
+                    u190 0772                      u270 06B2                      u191 076E  
+                    u271 06AE                      u280 06C8                      u281 06C4  
+                    u337 07E4                      u290 080A                      u347 0886  
+                    u291 0806                      u357 0662                      u367 06DE  
+                    u377 0732                      u387 0798                      wreg 0FE8  
+                   _LATB 0F8A                     _main 07CA                     start 7FFC  
+           ___param_bank 0000                    ?_main 0001                    _TRISB 0F93  
+                  _TRISC 0F94                    _TRISD 0F95                    tablat 0FF5  
+                  status 0FD8          __initialization 08FC             __end_of_main 0896  
+                 ??_main 000E            __activetblptr 0001            main@direction 000F  
+           rotateMotor@i 0005     rotateMotor@direction 0001                   _ADCON1 0FC1  
+       __end_of_checkBtn 08FC                   clear_0 0902                   isa$std 0001  
+           __mediumconst 0600                   tblptrh 0FF7                   tblptrl 0FF6  
+                 tblptru 0FF8         __end_of_steps_cw 0609               __accesstop 0080  
+__end_of__initialization 0908            ___rparam_used 0001         ??_calibrateMotor 0009  
+         __pcstackCOMRAM 0001             ?_rotateMotor 0001                ?_checkBtn 0001  
+                __Hparam 0000                  __Lparam 0000             __psmallconst 0600  
+                __pcinit 08FC                  __ramtop 0600                  __ptext0 07CA  
+                __ptext1 0896                  __ptext2 060A                  __ptext3 06FA  
+             ??_checkBtn 0003     end_of_initialization 0908               _rightSteps 0013  
+                postinc0 0FEE        __end_of_steps_ccw 0605                _PORTCbits 0F82  
+              _PORTDbits 0F83      start_initialization 08FC          calibrateMotor@i 000A  
+       rotateMotor@i_188 0007              __pbssCOMRAM 0011      calibrateMotor@i_200 000C  
+            __smallconst 0600                _leftSteps 0011                _steps_ccw 0601  
+               __Hrparam 0000                 __Lrparam 0000             __Lsmallconst 0600  
+          ??_rotateMotor 0003                 _checkBtn 0896                 _maxSteps 0015  
+               isa$xinst 0000                 _position 0017                 _steps_cw 0605  
+         _calibrateMotor 060A      __end_of_rotateMotor 07CA   __end_of_calibrateMotor 06FA  

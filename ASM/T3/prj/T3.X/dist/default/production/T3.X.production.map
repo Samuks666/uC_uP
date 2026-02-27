@@ -1,0 +1,107 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Wed Oct 29 22:58:01 2025
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000218
+                   .cinit    romdata   0x000218    program   0x000002
+.config_300001_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300001    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300006    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000219      
+                            0x300001    0x300001      
+                            0x300003    0x300003      
+                            0x300005    0x300006      
+            542 out of 33048 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+               CountDelay   0x0000b8    program     static ..\..\src\main.asm       
+                   DCB0_1   0x0000d6    program     static ..\..\src\main.asm       
+                   DCB1_1   0x000100    program     static ..\..\src\main.asm       
+                   DCB2_1   0x00012e    program     static ..\..\src\main.asm       
+                   DCB3_1   0x000152    program     static ..\..\src\main.asm       
+         DebounceCheckRB0   0x0000d2    program     static ..\..\src\main.asm       
+         DebounceCheckRB1   0x0000fc    program     static ..\..\src\main.asm       
+         DebounceCheckRB2   0x00012a    program     static ..\..\src\main.asm       
+         DebounceCheckRB3   0x00014e    program     static ..\..\src\main.asm       
+               DelayInner   0x0000c0    program     static ..\..\src\main.asm       
+               DelayOuter   0x0000c0    program     static ..\..\src\main.asm       
+                  DivDone   0x00019c    program     static ..\..\src\main.asm       
+                  DivLoop   0x000186    program     static ..\..\src\main.asm       
+                 DoDivide   0x000182    program     static ..\..\src\main.asm       
+               GetPattern   0x0001c6    program     static ..\..\src\main.asm       
+            LEDDelayInner   0x000098    program     static ..\..\src\main.asm       
+            LEDDelayOuter   0x000098    program     static ..\..\src\main.asm       
+                 MainLoop   0x00002c    program     static ..\..\src\main.asm       
+        PutZeroOnDisplays   0x0001ba    program     static ..\..\src\main.asm       
+             Set99FromDec   0x00011a    program     static ..\..\src\main.asm       
+                  SkipDec   0x00005c    program     static ..\..\src\main.asm       
+                SkipEnter   0x000066    program     static ..\..\src\main.asm       
+                  SkipInc   0x000052    program     static ..\..\src\main.asm       
+              SkipPulseWP   0x00007a    program     static ..\..\src\main.asm       
+             State_Config   0x000042    program     static ..\..\src\main.asm       
+           State_Counting   0x00007e    program     static ..\..\src\main.asm       
+          State_WaitPulse   0x00006a    program     static ..\..\src\main.asm       
+            UpdateDecDone   0x00011e    program     static ..\..\src\main.asm       
+           UpdateDisplays   0x000170    program     static ..\..\src\main.asm       
+              UseContador   0x000180    program     static ..\..\src\main.asm       
+               WaitRelDec   0x000122    program     static ..\..\src\main.asm       
+             WaitRelEnter   0x000146    program     static ..\..\src\main.asm       
+               WaitRelInc   0x0000f4    program     static ..\..\src\main.asm       
+             WaitRelPulse   0x000168    program     static ..\..\src\main.asm       
+                   inicio   0x000004    program     static ..\..\src\main.asm       
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   inicio   0x000004    program     static ..\..\src\main.asm       
+                 MainLoop   0x00002c    program     static ..\..\src\main.asm       
+             State_Config   0x000042    program     static ..\..\src\main.asm       
+                  SkipInc   0x000052    program     static ..\..\src\main.asm       
+                  SkipDec   0x00005c    program     static ..\..\src\main.asm       
+                SkipEnter   0x000066    program     static ..\..\src\main.asm       
+          State_WaitPulse   0x00006a    program     static ..\..\src\main.asm       
+              SkipPulseWP   0x00007a    program     static ..\..\src\main.asm       
+           State_Counting   0x00007e    program     static ..\..\src\main.asm       
+            LEDDelayInner   0x000098    program     static ..\..\src\main.asm       
+            LEDDelayOuter   0x000098    program     static ..\..\src\main.asm       
+               CountDelay   0x0000b8    program     static ..\..\src\main.asm       
+               DelayInner   0x0000c0    program     static ..\..\src\main.asm       
+               DelayOuter   0x0000c0    program     static ..\..\src\main.asm       
+         DebounceCheckRB0   0x0000d2    program     static ..\..\src\main.asm       
+                   DCB0_1   0x0000d6    program     static ..\..\src\main.asm       
+               WaitRelInc   0x0000f4    program     static ..\..\src\main.asm       
+         DebounceCheckRB1   0x0000fc    program     static ..\..\src\main.asm       
+                   DCB1_1   0x000100    program     static ..\..\src\main.asm       
+             Set99FromDec   0x00011a    program     static ..\..\src\main.asm       
+            UpdateDecDone   0x00011e    program     static ..\..\src\main.asm       
+               WaitRelDec   0x000122    program     static ..\..\src\main.asm       
+         DebounceCheckRB2   0x00012a    program     static ..\..\src\main.asm       
+                   DCB2_1   0x00012e    program     static ..\..\src\main.asm       
+             WaitRelEnter   0x000146    program     static ..\..\src\main.asm       
+         DebounceCheckRB3   0x00014e    program     static ..\..\src\main.asm       
+                   DCB3_1   0x000152    program     static ..\..\src\main.asm       
+             WaitRelPulse   0x000168    program     static ..\..\src\main.asm       
+           UpdateDisplays   0x000170    program     static ..\..\src\main.asm       
+              UseContador   0x000180    program     static ..\..\src\main.asm       
+                 DoDivide   0x000182    program     static ..\..\src\main.asm       
+                  DivLoop   0x000186    program     static ..\..\src\main.asm       
+                  DivDone   0x00019c    program     static ..\..\src\main.asm       
+        PutZeroOnDisplays   0x0001ba    program     static ..\..\src\main.asm       
+               GetPattern   0x0001c6    program     static ..\..\src\main.asm       
+
+
